@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Off Canvas Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/offcanvas.css') }}" rel="stylesheet">
+
+    
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+
+    <div id="todo_list" class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group">
+            <a href="#" class="list-group-item active">想做的事</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+          </div>
+        </div><!--/.sidebar-offcanvas-->
+    
+        <div class="col-xs-12 col-sm-9 ">
+          <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default">当前</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-info">历史</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-warning">关闭的</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                写新事件
+                <span class="glyphicon glyphicon-plus " aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="row to_item">
+            <div class="row"> 
+              <div class="col-xs-8">
+                <h3><strong>
+                this is the to title 电费供电供电公司的
+                fgdgdfgd如果士大夫豆腐干低分his is the to ti
+                dgdfgdtle 电费供电供电公司的如果士大夫豆腐干
+                sdfsfsf低分f低分
+                发射点发射点低分 
+                </strong></h3>
+              </div>
+              <div class="col-xs-4">
+                <button type="button" class="btn btn-default edit_button">修改</button>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                  难度 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </div>
+                <div class="col-xs-4">
+                  <span>创建于</span> 2017年9月24日18:28:12
+                </div>
+              </div>
+            </div>
+         
+
+        </div><!--/.col-xs-12.col-sm-9-->
+
+
+      </div><!--/row-->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">新增事件</h4>
+            </div>
+            <div class="modal-body">
+              <!-- model body start-->
+              <form>
+                <div class="form-group">
+                  <label for="want_todo_title" class="control-label">事件</label>
+                  <textarea class="form-control" id="want_todo_title"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="want_todo_all_score" class="control-label">分值</label>
+                  <input type="text" class="form-control" id="want_todo_all_score"  placeholder="（最大100）">
+                </div>
+              </form>
+
+              <!-- model body end-->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+
+    </div><!--/.container-->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
