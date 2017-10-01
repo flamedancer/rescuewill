@@ -27,7 +27,9 @@ function load_items(content_name, cur_template_items) {
 
 function save_want_todo() {
     var title = $('#want_todo_title').val();
-    var total_score = $('#want_todo_total_score').val();
+    var total_score = Number($('#want_todo_total_score').val());
+    if (!(total_score))
+        return
     if (title.length == 0 || total_score.length == 0)
         return;
     var post_data = {
@@ -100,7 +102,9 @@ $("#my_list li").click(function () {
 
 function save_memory() {
     var title = $('#memory_title').val();
-    var score = $('#memory_score').val();
+    var score = Number($('#memory_score').val());
+    if (!(score))
+        return
     if (title.length == 0 || score.length == 0)
         return;
     var post_data = {
@@ -115,6 +119,16 @@ function save_memory() {
     "json"
     );
 }
+
+
+function view_message(pre_title) {
+    $("#view_message").html(pre_title.html());
+    $("#viewModal").modal("show");
+}
+
+$('#viewModal').on('hidden.bs.modal', function (e) {
+    $("#view_message").html("");
+})
 
 $(function () {
     show_content('want_todo', '0');

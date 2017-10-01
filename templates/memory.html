@@ -21,8 +21,8 @@
     <div class="row item_eg" hidden>
       <div class="row">
         <div class="col-xs-8">
-          <h3><strong class="item_val" val="title">
-          </strong></h3>
+          <pre class="item_val" val="title"  onclick="view_message($(this))">
+          </pre>
         </div>
         <div class="col-xs-4">
           <button type="button" class="btn btn-default edit_button">修改</button>
@@ -58,7 +58,7 @@
             </div>
              <div class="form-group">
               <label for="memory_score" onkeyup="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'') " class="control-label">分值</label>
-              <input type="text" class="form-control" id="memory_score"  placeholder="（最大20）"">
+              <input type="text" class="form-control" id="memory_score"  placeholder="（最大20）" value="5">
             </div>
 
           <!-- model body end-->
@@ -70,4 +70,5 @@
       </div>
     </div>
   </div>
+
  </div>
