@@ -17,7 +17,7 @@ db_config = {
     'host': '127.0.0.1',
     'user': 'guochen',
     'password': '1111',
-    'db': 'rescurewill',
+
     'charset': 'utf8mb4',
 }
 
@@ -36,6 +36,7 @@ def init_db():
         with app.open_resource('schema.sql', mode='r') as f:
             db.cursor().execute(f.read())
         db.commit()
+        db_config['database'] = 'rescuewill'
 
 def connect_db():
     return pymysql.connect(**db_config)
