@@ -1,3 +1,5 @@
+create database if not exists rescurewill;
+
 -- drop table if exists want_todo;
 create table if not exists want_todo (
   id int UNSIGNED AUTO_INCREMENT,
