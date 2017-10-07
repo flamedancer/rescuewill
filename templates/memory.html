@@ -18,6 +18,9 @@
   </div>
 
   <div class="items">
+
+  </div>
+  <!-- itemm eg -->
     <div class="row item_eg" hidden>
       <div class="row">
         <div class="col-xs-8">
@@ -38,8 +41,7 @@
           </div>
       </div>
     </div>
-  </div>
-
+  <!-- items eg  end  -->
   
    <!-- Modal -->
   <div class="modal fade" id="memoryModal" tabindex="-1" role="dialog" aria-labelledby="memoryModalLabel">
@@ -56,7 +58,7 @@
               <label for="memory_title" class="control-label">记忆片段</label>
               <textarea class="form-control" id="memory_title"></textarea>
             </div>
-             <div class="form-group">
+            <div class="form-group">
               <label for="memory_score" onkeyup="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'') " class="control-label">分值</label>
               <input type="text" class="form-control" id="memory_score"  placeholder="（最大20）" value="5">
             </div>

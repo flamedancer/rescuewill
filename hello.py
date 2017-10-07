@@ -85,6 +85,11 @@ def compute_get_score(total_score, statisfy_star):
     
 @app.route('/')
 def hello_world():
+    return render_template('index.html')
+
+
+@app.route('/show_home_template')
+def show_home_template():
     return render_template('home.html')
 
     

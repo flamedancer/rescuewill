@@ -25,6 +25,11 @@ function load_items(content_name, cur_template_items) {
 }
 
 
+function clean_items(content_name) {
+    var cur_template_name = content_name + "_template";
+    $("#" + cur_template_name + " .items").empty();
+}
+
 function save_want_todo() {
     var title = $('#want_todo_title').val();
     var total_score = Number($('#want_todo_total_score').val());
@@ -53,16 +58,24 @@ function show_content(content_name, content_status) {
         $.get("/show_" + cur_template_name, function (data) {
             // 加载 content_template
             $("#content").append(data);
-            // 下载 content_items
-            $.getJSON("/show_" + content_name + "_items/" + content_status, function (data) {
-                cur_template_items = data;
-                // 加载 content_items
-                load_items(content_name, cur_template_items);
-                
 
-            });
         });
     }
+    if (content_name === 'home') {
+    }
+    else {
+        // 清空
+        clean_items(content_name);
+        // 下载 content_items
+        $.getJSON("/show_" + content_name + "_items/" + content_status, function (data) {
+            cur_template_items = data;
+            // 加载 content_items
+            load_items(content_name, cur_template_items);
+            
+
+        });
+    }
+    
     
     // 其他 ccontent template hide
     $("#content").children().each(function() {
@@ -131,6 +144,6 @@ $('#viewModal').on('hidden.bs.modal', function (e) {
 })
 
 $(function () {
-    show_content('want_todo', '0');
+    show_content('home', '0');
 });
 
