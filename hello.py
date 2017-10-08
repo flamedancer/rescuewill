@@ -166,12 +166,67 @@ def close_memory():
     cur = g.cuser.execute('''update memory set status=%s where id=%s and status=%s''', [2, id, 0])
     g.db.commit()
     return "ok"
-    
-    
-    
-    
-    
-    
+
+
+@app.route('/show_important_template')
+def show_important_template():
+    return render_template('important.html')
+
+@app.route('/show_important_items/<path:status>')
+def show_important_items(status):
+    g.cuser.execute('select create_time, title from important where status=%s', [status])
+    todos = g.cuser.fetchall()
+    return json.dumps(todos)
+
+@app.route('/add_important', methods=['POST'])
+def add_important():
+    title = request.form['title']
+    g.cuser.execute('insert into important (title, status) values (%s, %s)', [title, 0])
+    last_record_id = int(g.cuser.lastrowid)
+    g.db.commit()
+    g.cuser.execute('select create_time, title from important where id=%s', [last_record_id])
+    todos = g.cuser.fetchall()
+    return json.dumps(todos)
+
+@app.route('/close_important', methods=['POST'])
+def close_important():
+    id = request.form['id']
+    cur = g.cuser.execute('''update important set status=%s where id=%s and status=%s''', [2, id, 0])
+    g.db.commit()
+    return "ok"
+
+
+@app.route('/show_datetask_template')
+def show_datetask_template():
+    return render_template('datetask.html')
+
+
+@app.route('/show_datetask_items/<path:status>')
+def show_datetask_items(status):
+    g.cuser.execute('select create_time, title, score from datetask where status=%s', [status])
+    todos = g.cuser.fetchall()
+    return json.dumps(todos)
+
+
+@app.route('/add_datetask', methods=['POST'])
+def add_datetask():
+    title = request.form['title']
+    score = fix_range(int(request.form['score']), 20, 1)
+    g.cuser.execute('insert into datetask (title, score, status) values (%s, %s, %s)', [title, score, 0])
+    last_record_id = int(g.cuser.lastrowid)
+    g.db.commit()
+    g.cuser.execute('select create_time, title, score from datetask where id=%s', [last_record_id])
+    todos = g.cuser.fetchall()
+    return json.dumps(todos)
+
+
+@app.route('/close_datetask', methods=['POST'])
+def close_datetask():
+    id = request.form['id']
+    cur = g.cuser.execute('''update datetask set status=%s where id=%s and status=%s''', [2, id, 0])
+    g.db.commit()
+    return "ok"
+
 
 if __name__ == '__main__':
     init_db()

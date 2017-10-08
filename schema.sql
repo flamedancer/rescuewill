@@ -1,5 +1,29 @@
 create database if not exists rescuewill;
 use rescuewill;
+
+
+-- drop table if exists datetask;
+create table if not exists datetask (
+  id int UNSIGNED AUTO_INCREMENT,
+  title varchar(250) not null,
+  create_time datetime DEFAULT NOW(),
+  score INT not null,
+  status INT,
+  PRIMARY KEY ( `id` )
+);
+
+
+-- drop table if exists important;
+create table if not exists important (
+  id int UNSIGNED AUTO_INCREMENT,
+  title varchar(250) not null,
+  create_time datetime DEFAULT NOW(),
+  deadline datetime DEFAULT NOW(),
+  finish_time datetime,
+  status INT,
+  PRIMARY KEY ( `id` )
+);
+
 -- drop table if exists want_todo;
 create table if not exists want_todo (
   id int UNSIGNED AUTO_INCREMENT,

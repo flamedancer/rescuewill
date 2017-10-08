@@ -134,6 +134,43 @@ function save_memory() {
 }
 
 
+function save_important() {
+    var title = $('#important_title').val();
+    if (title.length == 0)
+        return;
+    var post_data = {
+        'title': title
+    }
+
+    $.post("/add_important", post_data, function(data) {
+        load_items("important", data);
+        $('#importantModal').modal('hide');
+    },
+    "json"
+    );
+}
+
+
+function save_datetask() {
+    var title = $('#datetask_title').val();
+    var score = Number($('#datetask_score').val());
+    if (!(score))
+        return
+    if (title.length == 0 || score.length == 0)
+        return;
+    var post_data = {
+        'title': title,
+        'score': score
+    }
+
+    $.post("/add_datetask", post_data, function(data) {
+        load_items("datetask", data);
+        $('#datetaskModal').modal('hide');
+    },
+    "json"
+    );
+}
+
 function view_message(pre_title) {
     $("#view_message").html(pre_title.html());
     $("#viewModal").modal("show");
@@ -142,6 +179,10 @@ function view_message(pre_title) {
 $('#viewModal').on('hidden.bs.modal', function (e) {
     $("#view_message").html("");
 })
+
+function active_sidebar() {
+    $('.row-offcanvas').toggleClass('active');
+}
 
 $(function () {
     show_content('home', '0');
