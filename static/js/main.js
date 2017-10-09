@@ -3,14 +3,14 @@ CUR_CONTENT_NAME = ""
 
 function load_items(content_name, cur_template_items) {
     var cur_template_name = content_name + "_template";
-    var item_eg = $("#" + cur_template_name + " .item_eg").first();
+    var item_eg = $("#want_todo_eg").first();
     for (var item_index in cur_template_items) {
         var item_row = item_eg.clone(true);
         var item_conf = cur_template_items[item_index];
         
         item_row.find(".item_val").each(function (){
             var item_var_type = $(this).attr("val");
-            var icon = $(this).children(".glyphicon").first();
+            var icon = $(this).children(".sign").first();
             if (icon.length == 0)
                 $(this).html(item_conf[item_var_type]);
             else {
@@ -18,6 +18,7 @@ function load_items(content_name, cur_template_items) {
                     $(this).append(icon.clone());
                 }
             }
+            icon.remove();
         });
         $("#" + cur_template_name + " .items").prepend(item_row);
         item_row.show();

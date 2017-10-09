@@ -76,7 +76,7 @@ def fix_range(value, max_value, min_value):
 
 def compute_hard_star(score):
     score = fix_range(score, 100, 1)
-    return  fix_range((score // 20) + 1, 5, 1)
+    return  fix_range(((score - 1) // 20) + 1, 5, 1)
 
 def compute_get_score(total_score, statisfy_star):
     statisfy_star = fix_range(statisfy_star, 5, 1)
