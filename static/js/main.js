@@ -3,7 +3,7 @@ CUR_CONTENT_NAME = ""
 
 function load_items(content_name, cur_template_items) {
     var cur_template_name = content_name + "_template";
-    var item_eg = $("#want_todo_eg").first();
+    var item_eg = $("#" + cur_template_name + " .item_eg").first();
     for (var item_index in cur_template_items) {
         var item_row = item_eg.clone(true);
         var item_conf = cur_template_items[item_index];
@@ -51,9 +51,14 @@ function save_want_todo() {
 }
 
 function show_content(content_name, content_status) {
-    
+    $("#cur_content_name").html(content_name);
+    $("#navbar_bnt").click();
     var cur_template_name = content_name + "_template";
     var cur_template_items = null;
+    if (content_name === 'home') {
+        // 强制刷新 home页
+        $("#" + cur_template_name).remove();
+    }
     // 不存在此 conten_template 下载之
     if($("#" + cur_template_name).length == 0) {
         $.get("/show_" + cur_template_name, function (data) {
