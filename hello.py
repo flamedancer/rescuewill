@@ -4,42 +4,24 @@ import os
 import math
 import json
 
+import pymysql
+from flask import g
 from flask import Flask, g, session, flash, render_template,\
     redirect, url_for, request, json
 from flask import jsonify
+from config import config_path
+
+
 app = Flask(__name__)
-app.config.SECRET_KEY = '123456'
-app.config.debug = True
-
-""" DB  config
-"""
-db_config = {
-    'host': '127.0.0.1',
-    'user': 'guochen',
-    'password': '1111',
-
-    'charset': 'utf8mb4',
-}
+app.config.from_pyfile(config_path)
 
 
-import pymysql
-from flask import g
-
-
-PWD =  app.root_path
+PWD = app.root_path
 print("current work path is {}".format(PWD))
 DATABASE = PWD + 'database.db'
 
-def init_db():
-    with app.app_context():
-        db = connect_db()
-        with app.open_resource('schema.sql', mode='r') as f:
-            db.cursor().execute(f.read())
-        db.commit()
-        db_config['database'] = 'rescuewill'
-
 def connect_db():
-    return pymysql.connect(**db_config)
+    return pymysql.connect(**app.config['DB_CONFIG'])
 
 @app.before_request
 def before_request():
@@ -229,5 +211,4 @@ def close_datetask():
 
 
 if __name__ == '__main__':
-    init_db()
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0')

@@ -1,7 +1,7 @@
 --  drop database rescuewill;
 create database if not exists rescuewill DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-use rescuewill;
 
+use rescuewill;
 
 -- drop table if exists datetask;
 create table if not exists datetask (
