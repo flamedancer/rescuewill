@@ -47,7 +47,7 @@ class AutoBrowser:
         :return:
         """
         self.driver.get("https://www.weitoupiao.com/example/8793w3ye8w9pm.html?alllink=/rank")
-        WebDriverWait(self.driver, 5).until(
+        WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.TAG_NAME, 'iframe'))
         )
         iframe = self.driver.find_elements_by_tag_name("iframe")[0]
@@ -86,7 +86,10 @@ if __name__ == '__main__':
     auto_browser = AutoBrowser()
     try:
         while 1:
-            auto_browser.login()
+            try:
+                auto_browser.login()
+            except Exception:
+                continue
             time.sleep(60)
     finally:
         auto_browser.release()
