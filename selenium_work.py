@@ -57,11 +57,9 @@ class AutoBrowser:
             EC.visibility_of_element_located((By.CLASS_NAME, cname))
         )
         uname_input = self.driver.find_elements_by_tag_name('tr')
-        print(uname_input)
         key_value = {}
         for item in uname_input:
             tds = item.find_elements_by_tag_name('td')
-            print(tds)
             if len(tds) >= 3:
                 key = tds[1].text
                 value = tds[2].text
@@ -76,7 +74,7 @@ class AutoBrowser:
 def save(info):
     now = datetime.datetime.now()
     db = hello.connect_db()
-    print(info)
+    # print(info)
     for key, value in info.items():
         db.cursor().execute('insert into vote (username, num, create_time) values (%s, %s, %s)', [
             key, value, now])
@@ -87,6 +85,8 @@ def save(info):
 if __name__ == '__main__':
     auto_browser = AutoBrowser()
     try:
-        auto_browser.login()
+        while 1:
+            auto_browser.login()
+            time.sleep(60)
     finally:
         auto_browser.release()
