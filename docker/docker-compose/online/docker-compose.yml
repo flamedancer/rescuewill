@@ -5,7 +5,7 @@ services:
   selenium-remote:
     image: selenium/standalone-chrome:3.14.0-beryllium
     hostname: selenium-remote
-    ports:s
+    ports:
       - 4444:4444
     volumes:
       - ../../../logs:/tmp/selenium
