@@ -35,7 +35,7 @@ class AutoBrowser:
         :return:
         """
         driver = webdriver.Remote(
-            command_executor=config.REMOTE_SELENIUM,
+            command_executor=config['REMOTE_SELENIUM'],
             desired_capabilities=DesiredCapabilities.CHROME,
             options=options,
         )
