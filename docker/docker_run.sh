@@ -17,6 +17,7 @@ docker run \
         -v "${PWD}":/${project_name} \
         -p 5000:5000 \
         -e CONFIG_MODE=${config_mode} \
+        -e FLASK_ENV=${config_mode} \
         --link some-mysql \
         --privileged \
         --restart=always \

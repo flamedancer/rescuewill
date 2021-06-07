@@ -1,5 +1,5 @@
 --  drop database rescuewill;
-create database if not exists rescuewill DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+create database if not exists rescuewill DEFAULT CHARACTER SET utf8mb4;
 
 use rescuewill;
 
@@ -51,6 +51,16 @@ create table if not exists memory (
   create_time datetime DEFAULT NOW(),
   score INT not null,
   status INT,
+  PRIMARY KEY ( `id` ),
+  KEY create_time (`create_time`)
+);
+
+-- drop table if exists vote;
+create table if not exists vote (
+  id int UNSIGNED AUTO_INCREMENT,
+  username varchar(50) not null,
+  num int(11) not null,
+  create_time datetime DEFAULT NOW(),
   PRIMARY KEY ( `id` ),
   KEY create_time (`create_time`)
 );
