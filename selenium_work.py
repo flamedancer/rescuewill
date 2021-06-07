@@ -90,6 +90,6 @@ if __name__ == '__main__':
                 auto_browser.login()
             except Exception:
                 continue
-            time.sleep(60)
+            time.sleep(120)
     finally:
         auto_browser.release()

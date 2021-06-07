@@ -13,7 +13,7 @@ services:
 
   rescuewill:
     image: flamedancer/rescuewill
-    entrypoint: python /rescuewill/hello.py
+    entrypoint: python /rescuewill/selenium_work.py
     hostname: rescuewill
     environment:
       - "CONFIG_MODE=production"
