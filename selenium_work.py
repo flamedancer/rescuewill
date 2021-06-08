@@ -79,6 +79,7 @@ def save(info):
         db.cursor().execute('insert into vote (username, num, create_time) values (%s, %s, %s)', [
             key, value, now])
     db.commit()
+    db.close()
 
 
 
@@ -90,6 +91,6 @@ if __name__ == '__main__':
                 auto_browser.login()
             except Exception:
                 continue
-            time.sleep(120)
+            time.sleep(60)
     finally:
         auto_browser.release()
