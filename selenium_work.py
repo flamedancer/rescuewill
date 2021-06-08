@@ -52,8 +52,8 @@ class AutoBrowser:
         )
         iframe = self.driver.find_elements_by_tag_name("iframe")[0]
         self.driver.switch_to.frame(iframe)
-        cname = 'card-body'
-        WebDriverWait(self.driver, 10).until(
+        cname = 'table_rank'
+        WebDriverWait(self.driver, 20).until(
             EC.visibility_of_element_located((By.CLASS_NAME, cname))
         )
         uname_input = self.driver.find_elements_by_tag_name('tr')
@@ -74,7 +74,7 @@ class AutoBrowser:
 def save(info):
     now = datetime.datetime.now()
     db = hello.connect_db()
-    # print(info)
+    print(info)
     for key, value in info.items():
         db.cursor().execute('insert into vote (username, num, create_time) values (%s, %s, %s)', [
             key, value, now])
