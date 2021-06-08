@@ -47,13 +47,14 @@ class AutoBrowser:
         :return:
         """
         self.driver.get("https://www.weitoupiao.com/example/8793w3ye8w9pm.html?alllink=/rank")
+        # self.driver.get("https://8793w3ye8w9pm.v.jisutp.com/")
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.TAG_NAME, 'iframe'))
         )
         iframe = self.driver.find_elements_by_tag_name("iframe")[0]
         self.driver.switch_to.frame(iframe)
         cname = 'table_rank'
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(self.driver, 60).until(
             EC.visibility_of_element_located((By.CLASS_NAME, cname))
         )
         uname_input = self.driver.find_elements_by_tag_name('tr')
