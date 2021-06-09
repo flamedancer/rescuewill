@@ -95,6 +95,7 @@ if __name__ == '__main__':
             except Exception as e:
                 print(e)
                 except_cnt -= 1
+                time.sleep(10)
                 continue
             max_cnt -= 1
             time.sleep(60)
