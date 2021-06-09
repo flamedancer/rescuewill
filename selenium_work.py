@@ -87,16 +87,19 @@ def save(info):
 if __name__ == '__main__':
     auto_browser = AutoBrowser()
     try:
-        max_cnt = 3600 * 4
-        except_cnt = 30
-        while max_cnt and except_cnt:
+        max_cnt = 240
+        max_except_cnt = 30
+        now_except_cnt = max_except_cnt
+        while max_cnt and now_except_cnt:
             try:
                 auto_browser.login()
             except Exception as e:
                 print(e)
-                except_cnt -= 1
+                now_except_cnt -= 1
                 time.sleep(10)
                 continue
+            else:
+                now_except_cnt = min(now_except_cnt + 1, max_except_cnt)
             max_cnt -= 1
             time.sleep(60)
     finally:
