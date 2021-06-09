@@ -26,6 +26,7 @@ services:
       - ../../..:/rescuewill
     depends_on:
       - selenium-remote
+    restart: always
 
 
 networks:

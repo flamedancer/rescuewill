@@ -87,11 +87,16 @@ def save(info):
 if __name__ == '__main__':
     auto_browser = AutoBrowser()
     try:
-        while 1:
+        max_cnt = 3600 * 4
+        except_cnt = 30
+        while max_cnt and except_cnt:
             try:
                 auto_browser.login()
-            except Exception:
+            except Exception as e:
+                print(e)
+                except_cnt -= 1
                 continue
+            max_cnt -= 1
             time.sleep(60)
     finally:
         auto_browser.release()
