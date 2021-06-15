@@ -21,6 +21,7 @@ class AutoBrowser:
         options.add_experimental_option("prefs", {
             "safebrowsing.enabled": True
         })
+        options.add_argument('--no-sandbox')
         if config['DEBUG']:
             self.driver = webdriver.Chrome(chrome_options=options)
         else:
