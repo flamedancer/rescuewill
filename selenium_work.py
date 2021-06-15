@@ -92,6 +92,7 @@ if __name__ == '__main__':
         now_except_cnt = max_except_cnt
         while max_cnt and now_except_cnt:
             try:
+                print("now cnt and exc", max_cnt, now_except_cnt)
                 auto_browser.login()
             except Exception as e:
                 print(datetime.datetime.now())
@@ -101,7 +102,9 @@ if __name__ == '__main__':
                 continue
             else:
                 now_except_cnt = min(now_except_cnt + 1, max_except_cnt)
-            max_cnt -= 1
-            time.sleep(60)
+                time.sleep(60)
+            finally:
+                max_cnt -= 1
+
     finally:
         auto_browser.release()
