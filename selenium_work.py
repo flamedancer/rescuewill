@@ -52,13 +52,16 @@ class AutoBrowser:
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.TAG_NAME, 'iframe'))
         )
+        print("get iframe ok")
         iframe = self.driver.find_elements_by_tag_name("iframe")[0]
         self.driver.switch_to.frame(iframe)
         cname = 'table_rank'
-        WebDriverWait(self.driver, 60).until(
+        WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.CLASS_NAME, cname))
         )
+        print("get table ok")
         uname_input = self.driver.find_elements_by_tag_name('tr')
+        print("get tr ok")
         key_value = {}
         for item in uname_input:
             tds = item.find_elements_by_tag_name('td')
@@ -107,7 +110,7 @@ if __name__ == '__main__':
                 continue
             else:
                 now_except_cnt = min(now_except_cnt + 1, max_except_cnt)
-                time.sleep(60)
+                time.sleep(50)
             finally:
                 max_cnt -= 1
     except Exception as e:
