@@ -91,6 +91,7 @@ if __name__ == '__main__':
         max_cnt = 240
         max_except_cnt = 30
         now_except_cnt = max_except_cnt
+        time.sleep(30)
         print("start init", datetime.datetime.now())
         auto_browser = AutoBrowser()
         print("end init", datetime.datetime.now())
