@@ -87,10 +87,12 @@ def save(info):
 if __name__ == '__main__':
     auto_browser = None
     try:
-        auto_browser = AutoBrowser()
         max_cnt = 240
         max_except_cnt = 30
         now_except_cnt = max_except_cnt
+        print("start init", datetime.datetime.now())
+        auto_browser = AutoBrowser()
+        print("end init", datetime.datetime.now())
         while max_cnt and now_except_cnt:
             try:
                 print("now cnt and exc", max_cnt, now_except_cnt)
