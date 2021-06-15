@@ -94,6 +94,7 @@ if __name__ == '__main__':
             try:
                 auto_browser.login()
             except Exception as e:
+                print(datetime.datetime.now())
                 print(e)
                 now_except_cnt -= 1
                 time.sleep(10)
