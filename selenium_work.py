@@ -111,6 +111,8 @@ if __name__ == '__main__':
     except Exception as e:
         print("init fail", datetime.datetime.now())
         print(e)
+        time.sleep(10)
+        exit(1)
     finally:
         if auto_browser:
             auto_browser.release()
