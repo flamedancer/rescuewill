@@ -13,7 +13,7 @@ services:
 
   rescuewill:
     image: flamedancer/rescuewill
-    entrypoint: sleep 30 && python /rescuewill/selenium_work.py > /rescuewill/logs/selenium.log
+    entrypoint: sleep 30 ; python /rescuewill/selenium_work.py > /rescuewill/logs/selenium.log
     hostname: rescuewill
     environment:
       - "CONFIG_MODE=production"
