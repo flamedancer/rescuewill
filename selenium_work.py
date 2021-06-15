@@ -85,8 +85,9 @@ def save(info):
 
 
 if __name__ == '__main__':
-    auto_browser = AutoBrowser()
+    auto_browser = None
     try:
+        auto_browser = AutoBrowser()
         max_cnt = 240
         max_except_cnt = 30
         now_except_cnt = max_except_cnt
@@ -95,7 +96,7 @@ if __name__ == '__main__':
                 print("now cnt and exc", max_cnt, now_except_cnt)
                 auto_browser.login()
             except Exception as e:
-                print(datetime.datetime.now())
+                print("get data fail", datetime.datetime.now())
                 print(e)
                 now_except_cnt -= 1
                 time.sleep(10)
@@ -105,6 +106,9 @@ if __name__ == '__main__':
                 time.sleep(60)
             finally:
                 max_cnt -= 1
-
+    except Exception as e:
+        print("init fail", datetime.datetime.now())
+        print(e)
     finally:
-        auto_browser.release()
+        if auto_browser:
+            auto_browser.release()
