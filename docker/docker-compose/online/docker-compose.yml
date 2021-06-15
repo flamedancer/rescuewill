@@ -26,10 +26,6 @@ services:
       - ../../..:/rescuewill
     depends_on:
       - selenium-remote
-    deploy:
-      restart_policy:
-        condition: any
-        delay: 30s
     restart: always
 
 
